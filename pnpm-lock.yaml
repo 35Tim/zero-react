@@ -81,6 +81,9 @@ devDependencies:
   webpack-merge:
     specifier: ^5.9.0
     version: registry.npmmirror.com/webpack-merge@5.9.0
+  webpackbar:
+    specifier: ^5.0.2
+    version: registry.npmmirror.com/webpackbar@5.0.2(webpack@5.88.2)
 
 packages:
 
@@ -3224,6 +3227,12 @@ packages:
     engines: {node: '>=0.8'}
     dev: true
 
+  registry.npmmirror.com/consola@2.15.3:
+    resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/consola/-/consola-2.15.3.tgz}
+    name: consola
+    version: 2.15.3
+    dev: true
+
   registry.npmmirror.com/content-disposition@0.5.4:
     resolution: {integrity: sha512-FveZTNuGw04cxlAiWbzi6zTAL/lhehaWbTtgluJh4/E95DqMwTmha3KZN1aAWA8cFIhHzMZUvLevkw5Rqk+tSQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/content-disposition/-/content-disposition-0.5.4.tgz}
     name: content-disposition
@@ -6226,6 +6235,13 @@ packages:
       renderkid: registry.npmmirror.com/renderkid@3.0.0
     dev: true
 
+  registry.npmmirror.com/pretty-time@1.1.0:
+    resolution: {integrity: sha512-28iF6xPQrP8Oa6uxE6a1biz+lWeTOAPKggvjB8HAs6nVMKZwf5bG++632Dx614hIWgUPkgivRfG+a8uAXGTIbA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/pretty-time/-/pretty-time-1.1.0.tgz}
+    name: pretty-time
+    version: 1.1.0
+    engines: {node: '>=4'}
+    dev: true
+
   registry.npmmirror.com/process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz}
     name: process-nextick-args
@@ -6785,6 +6801,12 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
+  registry.npmmirror.com/std-env@3.4.3:
+    resolution: {integrity: sha512-f9aPhy8fYBuMN+sNfakZV18U39PbalgjXG3lLB9WkaYTxijru61wb57V9wxxNthXM5Sd88ETBWi29qLAsHO52Q==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/std-env/-/std-env-3.4.3.tgz}
+    name: std-env
+    version: 3.4.3
+    dev: true
+
   registry.npmmirror.com/string_decoder@1.1.1:
     resolution: {integrity: sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/string_decoder/-/string_decoder-1.1.1.tgz}
     name: string_decoder
@@ -7290,6 +7312,22 @@ packages:
       - '@swc/core'
       - esbuild
       - uglify-js
+    dev: true
+
+  registry.npmmirror.com/webpackbar@5.0.2(webpack@5.88.2):
+    resolution: {integrity: sha512-BmFJo7veBDgQzfWXl/wwYXr/VFus0614qZ8i9znqcl9fnEdiVkdbi0TedLQ6xAK92HZHDJ0QmyQ0fmuZPAgCYQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/webpackbar/-/webpackbar-5.0.2.tgz}
+    id: registry.npmmirror.com/webpackbar/5.0.2
+    name: webpackbar
+    version: 5.0.2
+    engines: {node: '>=12'}
+    peerDependencies:
+      webpack: 3 || 4 || 5
+    dependencies:
+      chalk: registry.npmmirror.com/chalk@4.1.2
+      consola: registry.npmmirror.com/consola@2.15.3
+      pretty-time: registry.npmmirror.com/pretty-time@1.1.0
+      std-env: registry.npmmirror.com/std-env@3.4.3
+      webpack: registry.npmmirror.com/webpack@5.88.2(webpack-cli@5.1.4)
     dev: true
 
   registry.npmmirror.com/websocket-driver@0.7.4:

@@ -9,8 +9,9 @@ module.exports = merge(base, {
     rules: [
       {
         test: /\.(css|less)$/,
+        exclude: /node_modules/, // 排除 node_modules 目录
         use: [
-          MiniCssExtractPlugin.loader, // 使用 MiniCssExtractPlugin.loader 代替 style-loader
+          MiniCssExtractPlugin.loader, // 生产环境, 使用 MiniCssExtractPlugin.loader 代替 style-loader, 提取 CSS 到单独的文件中
           'css-loader',
           {
             loader: 'postcss-loader',
@@ -24,8 +25,6 @@ module.exports = merge(base, {
           },
           'less-loader',
         ],
-        // 排除 node_modules 目录
-        exclude: /node_modules/,
       },
     ],
   },
@@ -41,7 +40,7 @@ module.exports = merge(base, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'assets/css/[hash:8].css', // 将css单独提测出来放在assets/css 下
+      filename: 'css/[name].[hash:8].css', // 将 css 单独提测出来放在 css 下
     }),
   ],
 });
