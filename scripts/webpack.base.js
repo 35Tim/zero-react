@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
 
-const common = require('../config/common.ts');
+const common = require('../config/common.js');
 
 module.exports = {
   entry: path.resolve(__dirname, '../src/index.tsx'),
