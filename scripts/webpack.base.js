@@ -1,6 +1,7 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const common = require('../config/common.js');
 
@@ -9,7 +10,7 @@ module.exports = {
   output: {
     clean: true, // 在生成文件之前清空 output 目录
     path: path.resolve(__dirname, '../dist'), // 打包后的代码放在dist目录下
-    filename: '[name].[hash:8].js', // 打包的文件名
+    filename: '[name].[hash:8].bundle.js', // 打包的文件名
   },
   module: {
     rules: [
@@ -36,14 +37,14 @@ module.exports = {
           // imgs: 图片打包的文件夹
           // [name].[ext]: 设定图片按照本来的文件名和扩展名打包, 不用进行额外编码
           // [hash:8]: 一个项目中如果两个文件夹中的图片重名, 打包图片就会被覆盖, 加上hash值的前八位作为图片名, 可以避免重名
-          filename: 'images/[name].[hash:8][ext]',
+          filename: 'assets/images/[name].[hash:8][ext]',
         },
       },
       {
         test: /\.(eot|ttf|woff|woff2)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'fonts/[name].[hash:8][ext][query]',
+          filename: 'assets/fonts/[name].[hash:8][ext][query]',
         },
       },
     ],
@@ -64,6 +65,10 @@ module.exports = {
       title: common.title,
       template: path.resolve(__dirname, '../src/index.html'), // 使用自定义模板
       favicon: path.resolve(__dirname, common.favicon),
+    }),
+    // 复制 public 文件夹下的内容到打包根目录
+    new CopyPlugin({
+      patterns: [{ from: 'public', to: '' }],
     }),
   ],
 };

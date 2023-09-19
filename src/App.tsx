@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-// import Coffee from '@/assets/images/indigo.svg';
 import Coffee from '@/assets/images/coffee.jpg';
 
 import './index.less';
@@ -10,6 +9,7 @@ const App: React.FC = () => {
     <div className='wrapper'>
       hello 小7
       <img src={Coffee} width={200} height={100} />
+      <img src='images/favicon.ico' width={200} height={100} />
     </div>
   );
 };
