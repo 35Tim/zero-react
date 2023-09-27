@@ -14,43 +14,41 @@ const SiderMenu = () => {
   const [openKeys, setOpenKeys] = useState<string[]>([]);
 
   useEffect(() => {
-    setOpenKeys(routers.map((item: any) => item.pathname));
+    setOpenKeys(routers.map((item: any) => item.path));
   }, []);
 
   const getSelectedKeys = useMemo(() => {
-    return routers.map((item: any) => item.pathname);
+    return routers.map((item: any) => item.path);
   }, [pathname]);
 
   const onOpenChange = (keys: string[]) => {
     setOpenKeys(keys);
   };
 
-  const renderMenuItem = (routers: any[]) => {
-    console.log('routers', routers);
-
+  const renderMenuItem = (routers: any[] = []) => {
     return routers
-      .filter(item => item.path && item.name)
-      .map((subMenu: any) => {
-        if (subMenu.children) {
+      .filter(item => item.path)
+      .map((menu: any) => {
+        if (menu.children) {
           return (
             <SubMenu
-              key={subMenu.path}
+              key={menu.path}
               title={
                 <div>
-                  {!!subMenu.icon && subMenu.icon}
-                  <span>{subMenu.name}</span>
+                  {!!menu.icon && menu.icon}
+                  <span>{menu.name}</span>
                 </div>
               }>
-              {renderMenuItem(subMenu.children)}
+              {renderMenuItem(menu.children)}
             </SubMenu>
           );
         }
         return (
-          <Menu.Item key={subMenu.path}>
-            <Link to={subMenu.path}>
+          <Menu.Item key={menu.path}>
+            <Link to={menu.path}>
               <span>
-                {!!subMenu.icon && subMenu.icon}
-                <span>{subMenu.name}</span>
+                {!!menu.icon && menu.icon}
+                <span>{menu.name}</span>
               </span>
             </Link>
           </Menu.Item>
@@ -72,7 +70,7 @@ const SiderMenu = () => {
           height: '100%',
           borderRight: 0,
         }}>
-        {renderMenuItem(routers)}
+        {renderMenuItem(routers?.length > 0 ? routers[0].children : [])}
       </Menu>
     </Sider>
   );
