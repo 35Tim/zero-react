@@ -1,9 +1,10 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 
 import App from './App';
 
-const root = ReactDOM.createRoot(document.getElementById('root')!);
+import './index.less';
 
-// v18 的新方法
+const root = createRoot(document.getElementById('root')!);
+
 root.render(<App />);

@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -8,9 +9,10 @@ const common = require('../config/common.js');
 module.exports = {
   entry: path.resolve(__dirname, '../src/index.tsx'),
   output: {
-    clean: true, // 在生成文件之前清空 output 目录
+    clean: true, // 在生成文件之前清空 output 目录(webpack4需要配置 clean-webpack-plugin 删除, webpack5 内置了)
     path: path.resolve(__dirname, '../dist'), // 打包后的代码放在dist目录下
     filename: '[name].[hash:8].bundle.js', // 打包的文件名
+    publicPath: '/', // 打包后文件的公共前缀路径
   },
   module: {
     rules: [
@@ -29,8 +31,9 @@ module.exports = {
         type: 'asset',
         parser: {
           dataUrlCondition: {
-            // 如果大于或等于 25kb, 则按照相应的文件名和路径打包图片; 如果小于 25kb, 则将图片转成 base64 格式的字符串。
-            maxSize: 25 * 1024, // 25kb
+            // 如果大于或等于这个值, 则按照相应的文件名和路径打包成图片
+            // 如果小于这个值, 则将图片转成 base64 格式的字符串
+            maxSize: 25 * 1024, // 最大值: 25 kb
           },
         },
         generator: {
@@ -55,7 +58,9 @@ module.exports = {
 
     // 创建 import 的别名, 来确保模块引入变得更简单（可以直接导入别名, 而不需要写长长的地址）
     alias: {
-      '@': path.resolve(__dirname, '../src'),
+      ROOT: path.resolve(__dirname, '..'), // 根目录
+      '@': path.resolve(__dirname, '../src'), // src 目录
+      '@pages': path.resolve(__dirname, '../src/pages'), // src/pages 目录
     },
   },
   plugins: [
@@ -69,6 +74,9 @@ module.exports = {
     // 复制 public 文件夹下的内容到打包根目录
     new CopyPlugin({
       patterns: [{ from: 'public', to: '' }],
+    }),
+    new webpack.DefinePlugin({
+      MAP_ENV: process.env.MAP_ENV || 'wuxi', // 地图环境变量: jingzhou | wuxi
     }),
   ],
 };

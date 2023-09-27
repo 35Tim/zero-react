@@ -1,0 +1,41 @@
+.main-left-slider {
+  box-shadow: 0 2px 2px 2px rgba(26, 37, 51, 0.31);
+  .main-menu {
+    height: calc(100% - 50px);
+    overflow: auto;
+  }
+
+  .ant-menu-submenu-title,
+  .ant-menu-item {
+    z-index: 0;
+  }
+
+  .ant-menu-submenu-title::before,
+  .ant-menu-item::before {
+    content: '';
+    width: 0;
+    height: 100%;
+    display: block;
+    background: rgba(24, 144, 255, 0.5);
+    box-shadow: 0 0 175px 0 rgba(24, 144, 255, 1);
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  .ant-menu-submenu-title,
+  .ant-menu-item {
+    &:hover {
+      color: #fff;
+      &::before {
+        width: 100%;
+      }
+    }
+    > a {
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}

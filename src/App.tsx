@@ -1,16 +1,17 @@
-import * as React from 'react';
+import React from 'react';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/es/locale/zh_CN';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import Coffee from '@/assets/images/coffee.jpg';
-
-import './index.less';
+import router from '@/routers';
 
 const App: React.FC = () => {
   return (
-    <div className='wrapper'>
-      hello 小7
-      <img src={Coffee} width={200} height={100} />
-      <img src='images/favicon.ico' width={200} height={100} />
-    </div>
+    <React.StrictMode>
+      <ConfigProvider locale={zhCN}>
+        <RouterProvider router={createBrowserRouter(router)} />
+      </ConfigProvider>
+    </React.StrictMode>
   );
 };
 

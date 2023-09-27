@@ -1,0 +1,30 @@
+.mainHeader {
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: 220px auto 100px;
+  .mainHeaderLogo {
+    color: '#fff' !important;
+  }
+}
+
+.user-info {
+  cursor: pointer;
+  padding: 0 10px;
+  &:hover {
+    color: #1890ff;
+    background: rgba(0, 0, 0, 0.045);
+  }
+  .user-img {
+    vertical-align: middle;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    border: 1px solid rgb(221, 221, 221);
+    background: url('~@/assets/images/nowthen.jpg') no-repeat;
+    background-size: cover;
+    display: inline-block;
+  }
+  .user-name {
+    margin-left: 10px;
+  }
+}
